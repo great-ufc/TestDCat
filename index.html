@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="TestDCat: Catalog of Test Debt Subtypes and Management Activities">
+    <meta name="author" content="Bruno Saboia">
+
+	  <link rel="stylesheet" href="css/tree-boxes.css">
+    <link rel="stylesheet" href="css/styles.css">  
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="js/doT.js" type="text/javascript"></script>
+    <script src="js/templates/table.js" type="text/javascript"></script>
+    <script src="js/templates/card.js" type="text/javascript"></script>
+    <script src="js/model.js" type="text/javascript"></script>
+    <script src="js/catalog.js" type="text/javascript"></script>
+
+    <title>TestDCat v2</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap4-toggle/switch.css" rel="stylesheet">
+
+    <!-- Catalog: get data from Google Spreadsheets -->
+    <script src="https://spreadsheets.google.com/feeds/cells/1riiMiV0HPUPQ1Xe8FLAz0fkAlKglZJnh2bj0E7DyDZ8/2/public/values?alt=json-in-script&callback=doData"></script>
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation -->
+    <a class="menu-toggle rounded" href="#">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a class="js-scroll-trigger" href="#page-top">TestDCat</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#page-top">Home</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#about">About</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#catalog">Catalog</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#map">TestDCat</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead d-flex">
+      <div class="container text-center my-auto">
+        <h1 class="mb-1">TestDCat</h1>
+        <h3 class="mb-5">
+          <em>Catalog of Test Debt Subtypes and Management Activities</em>
+        </h3>
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#map" style="width: 140px;">Catalog</a>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="#about" style="width: 140px;">About</a>
+      </div>
+      <div class="overlay"></div>
+    </header>
+
+    <!-- Visão Geral -->
+    <section class="content-section bg-light" id="about">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h2>About TestDCat</h2>
+            <p class="lead mb-5">The TestDCat catalog is formed by test debt subtypes and, for each of them, a set of TD management activities is associated. Within each of these activities, there is information about "Approaches" and "Points of attention in the test process". This catalog was populated based on semi-structured interviews conducted with practitioners who perform test activities in eight projects from industry. With our catalog, we intend to help the management of test debts during the execution of software testing processes.</p>
+			      <br><br>  
+            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#catalog">Catalog</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catalog -->
+	  <section class="content-section bg-primary text-white text-center" id="catalog">
+      <div class="container">
+        <div class="content-section-heading">
+          <h3 class="text-secondary mb-0"></h3>
+          <h2 class="mb-5">How to use the TestDCat</h2>
+		     <p class="lead mb-5" style="text-align:justify; text-justify: inter-word;" >
+                   TestDCat follows a mind map structure. The figure below shows an example of how to use the catalog to help in the test debt management. 
+                   <br/><br/>
+                   <img src="img/how_to_use.jpg" alt="some text" width="auto" height="auto">
+             </p>
+             <br><br>  
+            <a class="btn btn-dark btn-xl js-scroll-trigger" style="width: 250px;margin-right: 10px;" href="#map">Show TestDCat</a>	
+            <a class="btn btn-light btn-xl js-scroll-trigger" style="width: 250px;" href="https://forms.gle/rBULD4bWZ9H8eYybA" target="_blank">Propose Improvements</a>
+    </section>
+
+    <!-- Mapa -->
+    <section class="content-section" id="map" style="width:auto;">
+      <div class="container text-center" style="min-width: 1600px;">
+        <div class="row">
+          <div class="col-lg-12 mx-auto">
+            <div class="content-section-heading">
+                <h2>TestDCat</h2>
+                <h3 class="mb-5">Catalog of Test Debt Subtypes and Management Activities</h3>
+            </div>
+            
+            <div id="example" style="width:auto;height:auto;" class="text-left">
+                <ul class="nav nav-justified nav-pills" id="myTab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="mtd01-tab" data-toggle="tab" href="#mtd01" role="tab" aria-controls="mtd01" aria-selected="true">Identificação</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="mtd02-tab" data-toggle="tab" href="#mtd02" role="tab" aria-controls="mtd02" aria-selected="false">Medição</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="mtd03-tab" data-toggle="tab" href="#mtd03" role="tab" aria-controls="mtd03" aria-selected="false">Priorização</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="mtd04-tab" data-toggle="tab" href="#mtd04" role="tab" aria-controls="mtd04" aria-selected="false">Comunicação</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="mtd05-tab" data-toggle="tab" href="#mtd05" role="tab" aria-controls="mtd05" aria-selected="false">Monitoramento</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="mtd06-tab" data-toggle="tab" href="#mtd06" role="tab" aria-controls="mtd06" aria-selected="false">Reembolso</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="mtd07-tab" data-toggle="tab" href="#mtd07" role="tab" aria-controls="mtd07" aria-selected="false">Documentação</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="mtd08-tab" data-toggle="tab" href="#mtd08" role="tab" aria-controls="mtd08" aria-selected="false">Prevenção</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="mtd01" role="tabpanel" aria-labelledby="mtd01-tab">
+                        <div class="accordion" id="accordionCatalog_mtd01"></div>    
+                    </div>
+                    <div class="tab-pane fade" id="mtd02" role="tabpanel" aria-labelledby="mtd02-tab">
+                      <div class="accordion" id="accordionCatalog_mtd02"></div>   
+                    </div>
+                    <div class="tab-pane fade" id="mtd03" role="tabpanel" aria-labelledby="mtd03-tab">
+                      <div class="accordion" id="accordionCatalog_mtd03"></div>   
+                    </div>
+                    <div class="tab-pane fade" id="mtd04" role="tabpanel" aria-labelledby="mtd04-tab">
+                      <div class="accordion" id="accordionCatalog_mtd04"></div>   
+                    </div>
+                    <div class="tab-pane fade" id="mtd05" role="tabpanel" aria-labelledby="mtd05-tab">
+                      <div class="accordion" id="accordionCatalog_mtd05"></div>   
+                    </div>
+                    <div class="tab-pane fade" id="mtd06" role="tabpanel" aria-labelledby="mtd06-tab">
+                      <div class="accordion" id="accordionCatalog_mtd06"></div>   
+                    </div>
+                    <div class="tab-pane fade" id="mtd07" role="tabpanel" aria-labelledby="mtd07-tab">
+                      <div class="accordion" id="accordionCatalog_mtd07"></div>   
+                    </div>
+                    <div class="tab-pane fade" id="mtd08" role="tabpanel" aria-labelledby="mtd08-tab">
+                      <div class="accordion" id="accordionCatalog_mtd08"></div>   
+                    </div>
+                  </div>    
+            </div>
+            </div>
+        </div>
+        <div id="rdiv" style="display: none;">
+          <hr style="margin: 60px;"/>
+          <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <h2>Your Action Plan</h2>
+                <p class="lead">Created with the selected actions. You can compare this actions by clicking on the button below.</p>
+                <div id="report" style="width:auto;height:auto;margin-top: 20px;" class="text-left"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 mx-auto text-right">
+              <button type="button" class="btn btn-primary">Compare these Actions</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer--> 
+    <footer class="footer text-center">
+      <div class="container">
+        <ul class="list-inline mb-5">
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/profile.php?id=100015922052390">
+              <i class="icon-social-facebook"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white" href="https://github.com/aragaobs/TestDCat">
+              <i class="icon-social-github"></i>
+            </a>
+          </li>
+        </ul>
+        <p class="text-muted small mb-0">Copyright &copy; TestDCat</p>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/stylish-portfolio.min.js"></script>
+    <script src="vendor/bootstrap4-toggle/bootstrap4-toggle.min.js"></script>
+  </body>
+
+</html>
