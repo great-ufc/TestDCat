@@ -1,33 +1,37 @@
 class CatalogTD {
-    constructor(jData) {
+    constructor(catData, stdData, lang) {
+        this.lang = lang;
+
         this.matrix = [];
         this.allActions = [];
-        this.data = jData.feed.entry;
+        this.data = catData.feed.entry;
 
-        this.management = {
-            'Identificação' : 'mtd01',
-            'Medição'       : 'mtd02',
-            'Priorização'   : 'mtd03',
-            'Comunicação'   : 'mtd04',
-            'Monitoramento' : 'mtd05',
-            'Reembolso'     : 'mtd06',
-            'Documentação'  : 'mtd07',
-            'Prevenção'     : 'mtd08',
-        };
-        
-        this.subtypes = {
-            'Baixa Cobertura de Código'         : {id: 'std01', hint: 'Acontece quando o sistema possui uma meta de cobertura e ela não é atingida durante a release.'},
-            'Adiamento de Testes'               : {id: 'std02', hint: 'Acontece quando testes são adiados e saem do escopo da release que será testada.'},
-            'Ausência de Testes'                : {id: 'std03', hint: ''},
-            'Ausência de Testes Automatizados'  : {id: 'std04', hint: ''},
-            'Defeitos não Encontrados em Testes': {id: 'std05', hint: ''},
-            'Testes muito Custosos'             : {id: 'std06', hint: ''},
-            'Erros de Estimativa'               : {id: 'std07', hint: ''},
-            'Equipamentos Inadequados'          : {id: 'std08', hint: ''},
-            'Alocação Inadequada'               : {id: 'std09', hint: ''},
-            'Todos'                             : {id: 'std10', hint: ''}
-        };
+        this.management = {};
+        this.subtypes = {};
 
+        /* Getting management types from spreadsheet data */
+        var count = 1;
+        var distinctMTD = [];
+        var firstColumn = this.data.filter(element => (element["gs$cell"]["col"] == 1 && element["gs$cell"]["row"] != 1));
+        for(var key in firstColumn){
+            var mtd = firstColumn[key]["gs$cell"]["$t"];
+            if (distinctMTD.indexOf(mtd) == -1){
+                this.management[mtd] = 'mtd' + (count++);
+                distinctMTD.push(mtd);
+            }
+        } 
+
+        /* Getting subtypes from spreadsheet data */
+        var colSTDLang = stdData.feed.entry.find(element => element["gs$cell"]["$t"] == lang)["gs$cell"]["col"];
+        var stdsTmp = stdData.feed.entry.filter(element => element["gs$cell"]["col"] == colSTDLang && element["gs$cell"]["row"] != 1);
+        var stdsHintsTmp = stdData.feed.entry.filter(element => element["gs$cell"]["col"] == (parseInt(colSTDLang) + 1) && element["gs$cell"]["row"] != 1);
+        for(var i = 0; i < stdsTmp.length; i++){
+            var std = stdsTmp[i]["gs$cell"]["$t"];
+            var hint = stdsHintsTmp[i]["gs$cell"]["$t"];
+            this.subtypes[std] = { id: 'std' + (i + 1), hint: hint};
+        }
+    
+        /* Creating matrix to store actions */
         for(var m in this.management){
             for(var s in this.subtypes){
                 this.matrix.push({
@@ -97,5 +101,16 @@ class CatalogTD {
     getCatalogSID(prop){ return this.subtypes[prop].id };
     getSubtypeHint(std){ return this.subtypes[std].hint };
     getCatalogSUID(mtd, std){ return this.management[mtd] + '_' + this.subtypes[std].id };
-
 };
+
+function getDataSource(lang){
+    if(lang === 'pt-BR'){
+        return "https://spreadsheets.google.com/feeds/cells/1riiMiV0HPUPQ1Xe8FLAz0fkAlKglZJnh2bj0E7DyDZ8/3/public/values?alt=json";
+    }
+
+    return "https://spreadsheets.google.com/feeds/cells/1riiMiV0HPUPQ1Xe8FLAz0fkAlKglZJnh2bj0E7DyDZ8/2/public/values?alt=json";
+}
+
+function getSubtypesSheetURL(){
+    return "https://spreadsheets.google.com/feeds/cells/1riiMiV0HPUPQ1Xe8FLAz0fkAlKglZJnh2bj0E7DyDZ8/4/public/values?alt=json";
+}

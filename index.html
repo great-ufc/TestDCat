@@ -2,16 +2,15 @@
 <html lang="en">
 
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="TestDCat: Catalog of Test Debt Subtypes and Management Activities">
     <meta name="author" content="Bruno Saboia">
 
-	  <link rel="stylesheet" href="css/tree-boxes.css">
     <link rel="stylesheet" href="css/styles.css">  
     <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="js/doT.js" type="text/javascript"></script>
+    <script src="vendor/doT/doT.js" type="text/javascript"></script>
+    
     <script src="js/templates/table.js" type="text/javascript"></script>
     <script src="js/templates/card.js" type="text/javascript"></script>
     <script src="js/templates/tab.js" type="text/javascript"></script>
@@ -41,11 +40,29 @@
         }
     </style>
 
-    <!-- Catalog: get data from Google Spreadsheets -->
-    <script src="https://spreadsheets.google.com/feeds/cells/1riiMiV0HPUPQ1Xe8FLAz0fkAlKglZJnh2bj0E7DyDZ8/2/public/values?alt=json-in-script&callback=doData"></script>
+    <!-- Catalog: get data from Google Spreadsheets 
+    <script src="https://spreadsheets.google.com/feeds/cells/1riiMiV0HPUPQ1Xe8FLAz0fkAlKglZJnh2bj0E7DyDZ8/2/public/values?alt=json-in-script&callback=doData"></script>-->
   </head>
 
   <body id="page-top">
+    <div id="printModal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Information</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Dear user, select the desired actions to print the catalog.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <!-- Navigation -->
     <a class="menu-toggle rounded no-print" href="#">
       <i class="fa fa-bars"></i>
@@ -89,8 +106,10 @@
         <div class="row">
           <div class="col-lg-10 mx-auto">
             <h2>About TestDCat</h2>
-            <p class="lead mb-5">The TestDCat catalog is formed by test debt subtypes and, for each of them, a set of TD management activities is associated. Within each of these activities, there is information about "Approaches" and "Points of attention in the test process". This catalog was populated based on semi-structured interviews conducted with practitioners who perform test activities in eight projects from industry. With our catalog, we intend to help the management of test debts during the execution of software testing processes.</p>
-			      <br><br>  
+            <p class="lead mb-5">The TestDCat catalog is formed by test debt subtypes and, for each of them, a set of TD management activities is associated. 
+              Within each of these activities, there is information about "Approaches" and "Points of attention in the test process". This catalog was populated 
+              based on semi-structured interviews conducted with practitioners who perform test activities in eight projects from industry. With our catalog, we 
+              intend to help the management of test debts during the execution of software testing processes.</p>
             <a class="btn btn-dark btn-xl js-scroll-trigger" href="#catalog">Catalog</a>
           </div>
         </div>
@@ -101,20 +120,20 @@
 	  <section class="content-section bg-primary text-white text-center no-print" id="catalog">
       <div class="container">
         <div class="content-section-heading">
-          <h3 class="text-secondary mb-0"></h3>
-          <h2 class="mb-5">How to use the TestDCat</h2>
-		     <p class="lead mb-5" style="text-align:justify; text-justify: inter-word;" >
-                   TestDCat follows a mind map structure. The figure below shows an example of how to use the catalog to help in the test debt management. 
-                   <br/><br/>
-                   <img src="img/how_to_use.jpg" alt="some text" width="auto" height="auto">
-             </p>
-             <br><br>  
-            <a class="btn btn-dark btn-xl js-scroll-trigger" style="width: 250px;margin-right: 10px;" href="#map">Show TestDCat</a>	
-            <a class="btn btn-light btn-xl js-scroll-trigger" style="width: 250px;" href="https://forms.gle/rBULD4bWZ9H8eYybA" target="_blank">Propose Improvements</a>
+          <h2 class="mb-5" style="margin-bottom: 10px !important;">How to use the TestDCat</h2>
+		      <p class="lead mb-5 text-center" style="text-justify: inter-word;" >
+            TestDCat follows a mind map structure. The figure below shows an example of how to use the catalog to help in the test debt management. 
+            <br/><br/>
+            <img src="img/how_to_use.jpg" alt="some text" width="auto" height="auto">
+          </p>
+          <a class="btn btn-dark btn-xl js-scroll-trigger" style="width: 250px;margin-right: 10px;" href="#map">Show TestDCat</a>	
+          <a class="btn btn-light btn-xl js-scroll-trigger" style="width: 250px;" href="https://forms.gle/rBULD4bWZ9H8eYybA" target="_blank">Propose Improvements</a>
+        </div>
+      </div>
     </section>
 
     <!-- Mapa -->
-    <section class="content-section" id="map" style="width:auto;">
+    <section class="content-section" id="map" style="width:auto; min-height: 750px;">
       <div class="container text-center" style="min-width: 1600px;">
         <div class="row no-print">
           <div class="col-lg-12 mx-auto">
@@ -129,14 +148,14 @@
           <hr style="margin: 60px;" class="no-print"/>
           <div class="row">
             <div class="col-lg-12 mx-auto">
-                <h2>Your Action Plan</h2>
-                <p class="lead">Created with the selected actions. You can compare this actions by clicking on the button below.</p>
+                <h2>TestDCat: Your Action Plan</h2>
+                <p class="lead">Created with the selected actions. You can use this actions to manage the test debts in your project.</p>
                 <div id="report" style="width:auto;height:auto;margin-top: 20px;" class="text-left"></div>
             </div>
           </div>
           <div class="row">
             <div class="col-lg-12 mx-auto text-right">
-              <button type="button" class="btn btn-primary" onclick="window.print();">Print as PDF</button>
+              <button type="button" class="btn btn-primary col-2 no-print" onclick="window.print();">Print as PDF</button>
             </div>
           </div>
         </div>
@@ -148,12 +167,12 @@
       <div class="container">
         <ul class="list-inline mb-5">
           <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/profile.php?id=100015922052390">
-              <i class="icon-social-facebook"></i>
+            <a class="social-link rounded-circle text-white mr-3" href="mailto:testdcat@gmail.com" target="_blank">
+              <i class="icon-envelope-letter"></i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white" href="https://github.com/aragaobs/TestDCat">
+            <a class="social-link rounded-circle text-white" href="https://github.com/great-ufc/TestDCat" target="_blank">
               <i class="icon-social-github"></i>
             </a>
           </li>
@@ -175,7 +194,7 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="js/stylish-portfolio.min.js"></script>
+    <script src="vendor/stylish-portifolio/stylish-portfolio.min.js"></script>
     <script src="vendor/bootstrap4-toggle/bootstrap4-toggle.min.js"></script>
   </body>
 
