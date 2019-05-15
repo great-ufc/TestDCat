@@ -14,6 +14,7 @@
     <script src="js/doT.js" type="text/javascript"></script>
     <script src="js/templates/table.js" type="text/javascript"></script>
     <script src="js/templates/card.js" type="text/javascript"></script>
+    <script src="js/templates/tab.js" type="text/javascript"></script>
     <script src="js/model.js" type="text/javascript"></script>
     <script src="js/catalog.js" type="text/javascript"></script>
 
@@ -121,61 +122,7 @@
                 <h2>TestDCat</h2>
                 <h3 class="mb-5">Catalog of Test Debt Subtypes and Management Activities</h3>
             </div>
-            
-            <div id="example" style="width:auto;height:auto;" class="text-left">
-                <ul class="nav nav-justified nav-pills" id="myTab" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link active" id="mtd01-tab" data-toggle="tab" href="#mtd01" role="tab" aria-controls="mtd01" aria-selected="true">Identificação</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="mtd02-tab" data-toggle="tab" href="#mtd02" role="tab" aria-controls="mtd02" aria-selected="false">Medição</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="mtd03-tab" data-toggle="tab" href="#mtd03" role="tab" aria-controls="mtd03" aria-selected="false">Priorização</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="mtd04-tab" data-toggle="tab" href="#mtd04" role="tab" aria-controls="mtd04" aria-selected="false">Comunicação</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="mtd05-tab" data-toggle="tab" href="#mtd05" role="tab" aria-controls="mtd05" aria-selected="false">Monitoramento</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="mtd06-tab" data-toggle="tab" href="#mtd06" role="tab" aria-controls="mtd06" aria-selected="false">Reembolso</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="mtd07-tab" data-toggle="tab" href="#mtd07" role="tab" aria-controls="mtd07" aria-selected="false">Documentação</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="mtd08-tab" data-toggle="tab" href="#mtd08" role="tab" aria-controls="mtd08" aria-selected="false">Prevenção</a>
-                    </li>
-                  </ul>
-                  <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="mtd01" role="tabpanel" aria-labelledby="mtd01-tab">
-                        <div class="accordion" id="accordionCatalog_mtd01"></div>    
-                    </div>
-                    <div class="tab-pane fade" id="mtd02" role="tabpanel" aria-labelledby="mtd02-tab">
-                      <div class="accordion" id="accordionCatalog_mtd02"></div>   
-                    </div>
-                    <div class="tab-pane fade" id="mtd03" role="tabpanel" aria-labelledby="mtd03-tab">
-                      <div class="accordion" id="accordionCatalog_mtd03"></div>   
-                    </div>
-                    <div class="tab-pane fade" id="mtd04" role="tabpanel" aria-labelledby="mtd04-tab">
-                      <div class="accordion" id="accordionCatalog_mtd04"></div>   
-                    </div>
-                    <div class="tab-pane fade" id="mtd05" role="tabpanel" aria-labelledby="mtd05-tab">
-                      <div class="accordion" id="accordionCatalog_mtd05"></div>   
-                    </div>
-                    <div class="tab-pane fade" id="mtd06" role="tabpanel" aria-labelledby="mtd06-tab">
-                      <div class="accordion" id="accordionCatalog_mtd06"></div>   
-                    </div>
-                    <div class="tab-pane fade" id="mtd07" role="tabpanel" aria-labelledby="mtd07-tab">
-                      <div class="accordion" id="accordionCatalog_mtd07"></div>   
-                    </div>
-                    <div class="tab-pane fade" id="mtd08" role="tabpanel" aria-labelledby="mtd08-tab">
-                      <div class="accordion" id="accordionCatalog_mtd08"></div>   
-                    </div>
-                  </div>    
-            </div>
+            <div id="dynamicCatalog" style="width:auto;height:auto;" class="text-left"></div>
             </div>
         </div>
         <div id="rdiv" style="display: none;">

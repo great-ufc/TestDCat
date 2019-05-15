@@ -22,17 +22,7 @@ function actionRemove(actionID) {
 
 $(document).ready(function(){
     //console.log(catalog);
-
-    for(var mtd in catalog.getManagement()){
-        for(var std in catalog.getSubtypes()){
-            var actions = catalog.findActions(mtd, std);
-            if(actions.length > 0){
-                var table = createTable(actions);
-                var card = createCard(catalog.getCatalogSUID(mtd, std), std, table, catalog.getSubtypeHint(std));
-                $('#accordionCatalog_' + catalog.getCatalogMID(mtd)).append($(card));
-            }
-        }
-    }
+    createTab(catalog, '#dynamicCatalog');
 
     $('input[type=checkbox]').click( function(){
         if($(this).is(':checked')){
