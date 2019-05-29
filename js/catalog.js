@@ -42,10 +42,36 @@ function printHandler(){
     }
 }
 
-$(document).ready(function(){
-    var lang = getUrlParameter('lang');
-    if(typeof lang === 'undefined') lang = 'en-US';
-    
+var lang = 'en-US';
+
+function getLangFromURL(){
+    lang = getUrlParameter('lang');
+    if(typeof lang === 'undefined'){
+        lang = 'en-US';
+    }else if(lang.toLowerCase().trim() == 'pt-br' || lang.toLowerCase().trim() == 'ptbr'){
+        lang = 'pt-BR';
+    }else if(lang.toLowerCase().trim() == 'en-us' || lang.toLowerCase().trim() == 'enus'){
+
+    }else{
+        lang = 'en-US';
+    }
+}
+
+function changeLanguage(){
+    if(lang == 'en-US'){
+        lang = 'pt-BR';
+        $('#flagBTN').attr('src', 'img/brazil.svg');
+    }else if(lang == 'pt-BR'){
+        lang = 'en-US';
+        $('#flagBTN').attr('src', 'img/united-states.svg');
+    }else{
+        lang = 'en-US';
+        $('#flagBTN').attr('src', 'img/united-states.svg');
+    }
+    loadCatalog();
+}
+
+function loadCatalog(){
     /* Two requests: get catalog considering the language and get subtypes information */
     $.get(getDataSource(lang), function(catalogData) {
         $.get(getSubtypesSheetURL(), function(stdData) {
@@ -68,6 +94,20 @@ $(document).ready(function(){
             });
         });
     });
+}
+
+$(document).ready(function(){
+    $.ajaxSetup({
+        beforeSend: function() {
+            $('#loader').show();
+        },
+        complete: function() {
+            $('#loader').hide();
+        }
+    });
+
+    getLangFromURL();
+    loadCatalog();
 
     $(document).bind("keyup keydown", function(e){
         if(e.ctrlKey && e.keyCode == 80){

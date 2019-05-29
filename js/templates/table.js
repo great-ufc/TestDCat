@@ -1,15 +1,15 @@
 var tableTemplate  = '<div class="table-responsive"><table class="table table-hover">';
-    tableTemplate += '<thead><tr class="d-flex"><th scope="col">#</th><th scope="col" class="col-2">What?</th><th scope="col" class="col-2">Why?</th><th scope="col" class="col-1">Where?</th>';
-    tableTemplate += '<th scope="col" class="col-3">How?</th><th scope="col" class="col-1">Who?</th><th scope="col" class="col-2">When?</th><th style="flex: 0 0 6.2%;max-width: 6.2%;" scope="col" class="text-center" data-toggle="tooltip" data-placement="top" title="Click on the button to select the action.">Options</th></tr></thead>';
+    tableTemplate += '<thead><tr class="d-flex"><th scope="col">#</th><th scope="col" class="col-2">What?</th><th scope="col" class="col-2 col-tdcat-table">Why?</th><th scope="col" class="col-1 col-tdcat-table">Where?</th>';
+    tableTemplate += '<th scope="col" class="col-3">How?</th><th scope="col" class="col-1 col-tdcat-table">Who?</th><th scope="col" class="col-2 col-tdcat-table">When?</th><th style="flex: 0 0 6.2%;max-width: 6.2%;" scope="col" class="text-center" data-toggle="tooltip" data-placement="top" title="Click on the button to select the action.">My Plan</th></tr></thead>';
     tableTemplate += '<tbody>{{=it.rows}}</tbody></table></div>';
 
 var rowTemplate  = '<tr class="d-flex"><th scope="row">{{=it.index}}</th>';
     rowTemplate += '<td class="col-2">{{=it.what}}</td>';
-    rowTemplate += '<td class="col-2">{{=it.why}}</td>';
-    rowTemplate += '<td class="col-1">{{=it.where}}</td>';
+    rowTemplate += '<td class="col-2 col-tdcat-table">{{=it.why}}</td>';
+    rowTemplate += '<td class="col-1 col-tdcat-table">{{=it.where}}</td>';
     rowTemplate += '<td class="col-3">{{=it.how}}</td>';
-    rowTemplate += '<td class="col-1">{{=it.who}}</td>';
-    rowTemplate += '<td class="col-2">{{=it.when}}</td>';
+    rowTemplate += '<td class="col-1 col-tdcat-table">{{=it.who}}</td>';
+    rowTemplate += '<td class="col-2 col-tdcat-table">{{=it.when}}</td>';
     rowTemplate += '<td style="flex: 0 0 6.2%;max-width: 6.2%;" class="text-center"><label class="switch "><input id="{{=it.actionID}}" type="checkbox" class="default"><span class="slider round"></span></label></td></tr>';
 
 function createTable(actions){
