@@ -60,13 +60,13 @@ function getLangFromURL(){
 function changeLanguage(){
     if(lang == 'en-US'){
         lang = 'pt-BR';
-        $('#flagBTN').attr('src', 'img/brazil.svg');
+        $('#flagBTN').attr('src', 'img/united-states.svg');
     }else if(lang == 'pt-BR'){
         lang = 'en-US';
-        $('#flagBTN').attr('src', 'img/united-states.svg');
+        $('#flagBTN').attr('src', 'img/brazil.svg');
     }else{
         lang = 'en-US';
-        $('#flagBTN').attr('src', 'img/united-states.svg');
+        $('#flagBTN').attr('src', 'img/brazil.svg');
     }
     loadCatalog();
 }
