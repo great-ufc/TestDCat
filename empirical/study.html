@@ -1,0 +1,146 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Empiric Studies</title>
+    <meta name="description" content="TestDCat">
+    <meta name="author" content="TestFactory">
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .column {
+        float: left;
+        width: 50%;
+        padding: 3px;
+    }
+
+    /* Clearfix (clear floats) */
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    h1 {
+        margin: 0px;
+    }
+
+    body {
+        margin: 0px;
+    }
+</style>
+
+<body>
+    <div style="background-color: #192F4D; color: white">
+        <div id="textHome">
+            <h1 style="text-align:center; font-size: 60px; ">TestDCat</h1>
+            <h3 style="text-align:center;">CATALOG OF TEST DEBT SUBTYPES AND MANAGEMENTE ACTIVITIES</h3>
+            <h4 style="text-align:center;">EMPIRICAL STUDY</h3>
+            <div style="align-items: center; width: 50%">
+                <select style="width: 30%; margin: 2%">
+                    <option value="2019">2019</option>
+                    <!-- <option value="2019">2019</option> -->
+                </select>
+                <select id="valueSelected" style="width: 30%; margin: 2%" onchange="filterSelection()">
+                    <option value="Lackoftests">Lack of Tests</option>
+                    <option value="DefectsNotFound">Defects not found in tests</option>
+                    <option value="testEffort">Test effort estimation errors</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p id="lackTestsText" style="text-align: center; font-size: 27px; margin:1%">The results shows that 18 releases
+            are
+            launched without any tests
+            in 2019 as
+            illustrated in the graphic below. In addition, T1 and T4 during one release had some tests, which were
+            initially planned, postponed.</p>
+        <p id="defectsNotFoundText" style="text-align: center; display: none; font-size: 27px;margin:1%">The graphics
+            below
+            presents the distribution of 193 improvements
+            reported by the
+            test team over 20 releases of that tools launched in 2019.
+            Most of improvements are reported for the six releases of the web tool T4 (110).
+            Several of them refers to the incomplete test specification such as lack of test procedures to execute the
+            test or incorrect preconditions of test cases.</p>
+        <p id="testEffortText" style="text-align: center; display: none; font-size: 27px;margin:1%">Regarding the effort
+            to
+            execute and specify the tests by the team,
+            the results
+            show that T1, T2 and T5 had the actual test effort higher than the planned test effort.</p>
+    </div>
+
+    <div id="lackTests" style="text-align: center;margin:1%">
+        <img src="ausencia.png">
+    </div>
+
+    <div id="defectsNotFound" style="text-align: center; display: none;margin:1%">
+        <img src="Ajustes.png">
+    </div>
+
+    <div id="testEffort" style="text-align: center; display: none;margin:1%">
+        <div class="row">
+            <div class="column">
+                <img src="effortT1.png">
+            </div>
+            <div class="column">
+                <img src="effortT2.png">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <img src="effortT3.png">
+            </div>
+            <div class="column">
+                <img src="effortT4.png">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <img src="effortT5.png">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterSelection() {
+            var c = document.getElementById("valueSelected").value;
+            if (c === "Lackoftests") {
+                document.getElementById("lackTestsText").style.display = "block"
+                document.getElementById("lackTests").style.display = "block"
+                document.getElementById("defectsNotFoundText").style.display = "none"
+                document.getElementById("defectsNotFound").style.display = "none"
+                document.getElementById("testEffortText").style.display = "none"
+                document.getElementById("testEffort").style.display = "none"
+            }
+
+            else if (c === "DefectsNotFound") {
+                document.getElementById("lackTestsText").style.display = "none"
+                document.getElementById("lackTests").style.display = "none"
+                document.getElementById("defectsNotFoundText").style.display = "block"
+                document.getElementById("defectsNotFound").style.display = "block"
+                document.getElementById("testEffortText").style.display = "none"
+                document.getElementById("testEffort").style.display = "none"
+            }
+
+            else if (c === "testEffort") {
+                document.getElementById("lackTestsText").style.display = "none"
+                document.getElementById("lackTests").style.display = "none"
+                document.getElementById("defectsNotFoundText").style.display = "none"
+                document.getElementById("defectsNotFound").style.display = "none"
+                document.getElementById("testEffortText").style.display = "block"
+                document.getElementById("testEffort").style.display = "block"
+            }
+        }
+    </script>
+</body>
+
+</html>
