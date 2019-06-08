@@ -43,27 +43,97 @@
             <h1 style="text-align:center; font-size: 60px; ">TestDCat</h1>
             <h3 style="text-align:center;">CATALOG OF TEST DEBT SUBTYPES AND MANAGEMENTE ACTIVITIES</h3>
             <h4 style="text-align:center;">EMPIRICAL STUDY</h3>
-            <div style="align-items: center; width: 50%">
-                <select style="width: 30%; margin: 2%">
-                    <option value="2019">2019</option>
-                    <!-- <option value="2019">2019</option> -->
-                </select>
-                <select id="valueSelected" style="width: 30%; margin: 2%" onchange="filterSelection()">
-                    <option value="Lackoftests">Lack of Tests</option>
-                    <option value="DefectsNotFound">Defects not found in tests</option>
-                    <option value="testEffort">Test effort estimation errors</option>
-                </select>
-            </div>
+            <br/>
         </div>
     </div>
     <div>
-        <p id="lackTestsText" style="text-align: center; font-size: 27px; margin:1%">The results shows that 18 releases
+        <div id="design">
+            <h3 style="text-align:left; margin: 2%">EMPIRICAL DESIGN</h3>
+            <p style="text-align:left; margin: 3%"> 
+                We have performed an empirical study to identify the main issues faced on the GREat Test Factory. The objects of the study are five tools we have developed in a partnership with industry. The following table presents the target platform, tools and their number of releases.
+                The tools' names and versions have been changed for reasons of confidentiality agreement.
+                Two web tools are of global use (T3 and T4), their complexity demands constant and accurate testing since they present critical information about the  company's internal processes such as schedules, activity monitoring and resource allocation. 
+                Mobile applications (T1 and T2) are based on Android technology and are continuously updated with new features and changes in the interaction flow to cover usability issues.
+                The major challenge faced on such mobile applications is that they currently have together over 3 millions active users, so they must be tested in several Android versions running on different target devices to ensure they work as users expected. </p> 
+<center>
+
+
+            <table  width="467" border="1px" class="table" style="text-align:center;">
+            <thead class="thead-light;">
+              <tr style="background-color: grey">
+                <th scope="col">Platform    </th>
+                <th scope="col">Tool    </th>
+<!--                 <th scope="col">Tool</th> -->
+                <th scope="col">Releases    </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- para mudar a cor da tabela basta acrescentar ao tr class ='table-secondary' ( mas eu não achei tão legal assim) -->
+              <tr>
+                <th scope="row">Mobile</th>
+                <td>T1</td>
+                <!-- <td>Test</td> -->
+                <td>5</td>
+              </tr>
+              <tr>
+                <th scope="row">Mobile</th>
+                <td>T2</td>
+                <!-- <td>Test</td> -->
+                <td>4</td>
+              </tr>
+              <tr>
+                <th scope="row">Web</th>
+                <td>T3</td>
+                <!-- <td>Test</td> -->
+                <td>3</td>
+              </tr>
+              <tr>
+                <th scope="row">Web</th>
+                <td>T4</td>
+                <!-- <td>Test</td> -->
+                <td>4</td>
+              </tr>
+              <tr>
+                <th scope="row">Web</th>
+                <td>T5</td>
+                <!-- <td>Test</td> -->
+                <td>5</td>
+              </tr>
+            </tbody>
+          </table>
+
+          </center>
+        </div>
+<br/>
+        <div id="design">
+            <h3 style="text-align:left; margin: 2%">RESULTS</h3>
+
+                <div style="background-color: grey; align-items: center; width: auto">
+                    <label for="fave" style="vertical-align: top; margin: 2%"> Year:
+                        <select name="Year" style="width: 30%; margin: 1%">
+                            <option value="2019">2019</option>
+                            <!-- <option value="2019">2019</option> -->
+                        </select>
+                    </label>
+                        <label for="fave" style="vertical-align: top; margin: 2%"> Test Debt:
+                        <select name="Test Debt" id="valueSelected" style="width: 40%; margin: 1%" onchange="filterSelection()">
+                            <option value="Lackoftests">Lack of Tests</option>
+                            <option value="DefectsNotFound">Defects not found in tests</option>
+                            <option value="testEffort">Test effort estimation errors</option>
+                        </select>
+                </div>
+
+        </div>
+
+
+
+        <p id="lackTestsText" style="margin: 3%">The results shows that 18 releases
             are
             launched without any tests
             in 2019 as
             illustrated in the graphic below. In addition, T1 and T4 during one release had some tests, which were
             initially planned, postponed.</p>
-        <p id="defectsNotFoundText" style="text-align: center; display: none; font-size: 27px;margin:1%">The graphics
+        <p id="defectsNotFoundText" style="display: none; margin: 3%">The graphics
             below
             presents the distribution of 193 improvements
             reported by the
@@ -71,7 +141,7 @@
             Most of improvements are reported for the six releases of the web tool T4 (110).
             Several of them refers to the incomplete test specification such as lack of test procedures to execute the
             test or incorrect preconditions of test cases.</p>
-        <p id="testEffortText" style="text-align: center; display: none; font-size: 27px;margin:1%">Regarding the effort
+        <p id="testEffortText" style="display: none; margin: 3%">Regarding the effort
             to
             execute and specify the tests by the team,
             the results
