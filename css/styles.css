@@ -2,4 +2,11 @@ body {
     font-family: "helvetica"
 }
 
+.df-nav-link-default {
+    line-height: 48px !important;
+}
+
+.df-nav-link-large {
+    width: 190px !important;
+}
 

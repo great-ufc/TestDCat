@@ -1,6 +1,7 @@
 class CatalogTD {
-    constructor(catData, stdData, lang) {
+    constructor(catData, stdData, lang, cFormat) {
         this.lang = lang;
+        this.cFormat = cFormat;
 
         this.matrix = [];
         this.allActions = [];
@@ -95,7 +96,9 @@ class CatalogTD {
           getData() { return this.data };
         getMatrix() { return this.matrix };
     getManagement() { return this.management };
-      getSubtypes() { return this.subtypes };   
+      getSubtypes() { return this.subtypes };
+  isInverseFormat() { return this.cFormat == 'inverseFormat'};
+  isDefaultFormat() { return this.cFormat == 'default'};   
 
     getCatalogMID(prop){ return this.management[prop] };
     getCatalogSID(prop){ return this.subtypes[prop].id };

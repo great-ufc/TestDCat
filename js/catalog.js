@@ -1,8 +1,12 @@
 var catalog = null;
 var selectedActions = [];
 
-function processSpreadSheetData(json, stdData, lang) {
-    catalog = new CatalogTD(json, stdData, lang);
+var lang = 'en-US';
+var cFormat = 'default';
+
+function processSpreadSheetData(json, stdData, lang, cFormat) {
+    catalog = new CatalogTD(json, stdData, lang, cFormat);
+    console.log(catalog);
 }
 
 function actionRemove(actionID) {
@@ -42,8 +46,6 @@ function printHandler(){
     }
 }
 
-var lang = 'en-US';
-
 function getLangFromURL(){
     lang = getUrlParameter('lang');
     if(typeof lang === 'undefined'){
@@ -71,11 +73,30 @@ function changeLanguage(){
     loadCatalog();
 }
 
+/**
+ * Default: "Subtypes of test debts -> activities -> actions"
+ * Old format: "TD management activities -> subtypes of test debts -> actions"
+ */
+function changeFormat(){
+    console.log('we start here!');
+    if(cFormat == 'default'){
+        $('#imgHowTo').attr('src', 'img/HowTo_v3.svg');
+        cFormat = 'inverseFormat';
+    }else if(cFormat == 'inverseFormat'){
+        cFormat = 'default';
+        $('#imgHowTo').attr('src', 'img/HowTo_v2.svg');
+    }else{
+        cFormat = 'default';
+        $('#imgHowTo').attr('src', 'img/HowTo_v2.svg');
+    }
+    loadCatalog();
+}
+
 function loadCatalog(){
     /* Two requests: get catalog considering the language and get subtypes information */
     $.get(getDataSource(lang), function(catalogData) {
         $.get(getSubtypesSheetURL(), function(stdData) {
-            processSpreadSheetData(catalogData, stdData, lang);
+            processSpreadSheetData(catalogData, stdData, lang, cFormat);
             createTab(catalog, '#dynamicCatalog');
 
             /* Binding checkbox events to put selected actions in a new table */
@@ -97,6 +118,8 @@ function loadCatalog(){
 }
 
 $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+
     $.ajaxSetup({
         beforeSend: function() {
             $('#loader').show();
@@ -114,5 +137,19 @@ $(document).ready(function(){
             printHandler();
             return false;
         }
+    });
+
+    $('#changeFormatBTN').on('click', function(event){
+        event.preventDefault();
+        changeFormat();
+        $(this).attr('aria-pressed', "false");
+        $(this).removeClass('active');
+    });
+
+    $('#changeLanguageBTN').on('click', function(event){
+        event.preventDefault();
+        changeLanguage();
+        $(this).attr('aria-pressed', "false");
+        $(this).removeClass('active');
     });
 });

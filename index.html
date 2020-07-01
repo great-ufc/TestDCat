@@ -17,7 +17,7 @@
     <script src="js/model.js" type="text/javascript"></script>
     <script src="js/catalog.js" type="text/javascript"></script>
 
-    <title>TestDCat v2</title>
+    <title>TestDCat v3</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,6 +33,7 @@
     <link href="css/stylish-portfolio.min.css" rel="stylesheet">
     <link href="vendor/bootstrap4-toggle/switch.css" rel="stylesheet">
     <style>
+        @page { size: landscape; }
         @media print{    
           .no-print, .no-print *{
             display: none !important;
@@ -158,7 +159,7 @@
           <h2 class="mb-5" style="margin-bottom: 10px !important;">How to use the TestDCat</h2>
 		      <p class="lead mb-5 text-center" style="text-justify: inter-word; margin-bottom: 2rem!important;" >
             The figure below shows an example of how to use the catalog to help in the test debt management.<br/><br/>
-            <img src="img/HowTo.svg" alt="some text" width="auto" height="auto"/>
+            <img id="imgHowTo" src="img/HowTo_v2.svg" alt="How to use the TestDCat" width="auto" height="auto"/>
           </p>
           
           <a class="btn btn-dark btn-xl js-scroll-trigger" style="width: 250px;margin-right: 10px;" href="#map">Show TestDCat</a>	
@@ -172,20 +173,33 @@
       <div class="container text-center" style="min-width: 1600px;">
         <div class="row no-print">
           <div class="col-lg-12 mx-auto">
-            <div class="content-section-heading">
+            <div class="content-section-heading no-print">
                 <div class="row">
-                  <div  class="col-lg-2"></div>
-                  <div  class="col-lg-8">
+                  <div  class="col-lg-3"></div>
+                  <div  class="col-lg-6">
                       <h2>TestDCat</h2>
                   </div>
-                  <div  class="col-lg-1" style="padding-left: 5%;padding-top: 8px;"><div id="loader" class="loader" style="display: none"></div></div>
+                  <div  class="col-lg-1" style="padding-left: 7%;padding-top: 8px;"><div id="loader" class="loader" style="display: none"></div></div>
+                  <div  class="col-lg-1" style="padding-left: 5%;">
+                    <a id="changeFormatBTN" type="button" class="btn btn-light no-print" style="width: 76px; height: 64px;line-height: 65px;" data-toggle="tooltip" data-placement="top" title="Change the visualization format.">
+                      <i class="fas fa-exchange-alt" style="font-size: 30px; color: #1b7490;"></i>
+                    </a>
+                  </div>
                   <div  class="col-lg-1">
-                      <button type="button" class="btn btn-light no-print" onclick="changeLanguage();">
+                      <a id="changeLanguageBTN" type="button" class="btn btn-light no-print" data-toggle="tooltip" data-placement="top" title="Change the catalog language.">
                           <img id="flagBTN" src="img/brazil.svg" width="50px" height="50px"/>
-                      </button>
+                      </a>
                   </div>
                 </div>
                 <h3 class="mb-5">Catalog of Test Debt Subtypes and Management Activities</h3>
+            </div>
+            <div class="content-section-heading d-none d-print-block">
+              <div class="row">
+                <div  class="col-lg-12">
+                  <h2>TestDCat</h2>
+                  <h3 class="mb-5">Catalog of Test Debt Subtypes and Management Activities</h3>
+                </div>
+              </div>
             </div>
             <div id="dynamicCatalog" style="width:auto;height:auto;" class="text-left"></div>
             </div>
